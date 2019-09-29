@@ -5,7 +5,7 @@ export interface IConfiguration {
 }
 
 export interface IConfigurationApi {
-  method: 'JWT';
+  method: null | 'Bearer';
   // Technical debt define the possibities
   method_data: any;
   endpoint: string;

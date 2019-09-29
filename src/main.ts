@@ -61,12 +61,19 @@ export class MDKCR_Event_Tracker {
 
   // This function only returns the request, at some point this will be grown into parsing from different options
   public buildRequest(payload: any) {
+    const headers = {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    };
+
+    if (this.configuration.api.method === 'Bearer') {
+      headers['Authorization'] =
+        'Bearer ' + this.configuration.api.method_data.token;
+    }
+
     return {
       method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
+      headers,
       body: JSON.stringify(payload),
     };
   }
